@@ -12,10 +12,10 @@ template <>template <> Vec3 <float>::Vec3(const Vec3<int> &v):x(v.x),y(v.y),z(v.
 
 };
 
-//³õÊ¼»¯Áã¾ØÕó
+//åˆå§‹åŒ–é›¶çŸ©é˜µ
 Matrix::Matrix(int r ,int c) :m(std::vector<std::vector<float>> (r,std::vector<float>(c,0.f))),rows(r),cols(c){ }
 
-//ĞĞ·ÃÎÊºÍÁĞ·ÃÎÊ
+//è¡Œè®¿é—®å’Œåˆ—è®¿é—®
 int Matrix::nrows() {
 	return rows;
 }
@@ -24,7 +24,7 @@ int Matrix::ncols() {
 	return cols;
 }
 
-//µ¥Î»¾ØÕóÉú³É
+//å•ä½çŸ©é˜µç”Ÿæˆ
 Matrix Matrix::identity(int dimensions) {
 	Matrix E(dimensions, dimensions);
 	for (int i = 0; i < dimensions; i++) {
@@ -40,7 +40,7 @@ std::vector<float>& Matrix::operator[](const int i) {
 	return m[i];
 }
 
-//¾ØÕó³Ë·¨
+//çŸ©é˜µä¹˜æ³•
 Matrix Matrix::operator*(const Matrix& a) {
 	assert(cols == a.rows);
 	Matrix result(rows, a.cols);
@@ -55,7 +55,7 @@ Matrix Matrix::operator*(const Matrix& a) {
 	return result;
 }
 
-//×ªÖÃ¾ØÕó
+//è½¬ç½®çŸ©é˜µ
 Matrix Matrix::transpose() {
 	Matrix result(cols, rows);
 	for (int i = 0; i < rows; i++) {
@@ -66,7 +66,7 @@ Matrix Matrix::transpose() {
 	return result;
 }
 
-//???¾ØÕóÇóÄæ£¨¸ßË¹-Ô¼µ±ÏûÔª·¨£©
+//???çŸ©é˜µæ±‚é€†ï¼ˆé«˜æ–¯-çº¦å½“æ¶ˆå…ƒæ³•ï¼‰
 Matrix Matrix::inverse() {
 	assert(rows == cols);
 
@@ -104,7 +104,7 @@ Matrix Matrix::inverse() {
 		}
 	}
 
-	//ÌáÈ¡Äæ¾ØÕó
+	//æå–é€†çŸ©é˜µ
 	Matrix truncate(rows, cols);
 
 	for (int i = 0; i < rows; i++) {
@@ -115,7 +115,7 @@ Matrix Matrix::inverse() {
 	return truncate;
 }
 
-//Êä³öÁ÷ÖØÔØ
+//è¾“å‡ºæµé‡è½½
 std::ostream& operator<<(std::ostream& s, Matrix& m) {
 	for (int i = 0; i < m.nrows(); i++) {
 		for (int j = 0; j < m.ncols(); j++) {
